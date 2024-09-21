@@ -1,9 +1,10 @@
 package com.anchoreer.chat;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+import com.anchoreer.chat.annotation.ChatApplicationTest;
+
+@ChatApplicationTest
 class ChatApplicationTests {
 
 	@Test
