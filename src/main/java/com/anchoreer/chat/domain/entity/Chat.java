@@ -16,9 +16,9 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @Entity
-@Table(name = "message")
+@Table(name = "chat")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Message extends BaseTimeEntity{
+public class Chat extends BaseTimeEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,6 +28,6 @@ public class Message extends BaseTimeEntity{
     private ChatRoomUser chatRoomUser;
 
     @NotNull
-    @Size(max = 255)
+    @Size
     private String contents;
 }
