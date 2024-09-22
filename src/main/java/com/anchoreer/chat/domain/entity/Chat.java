@@ -29,13 +29,18 @@ public class Chat extends BaseTimeEntity {
     private ChatRoomUser chatRoomUser;
 
     @NotNull
-    @Size
+    @Size(max = 5000)
     private String contents;
 
+    @NotNull
+    private Boolean isDeleted;
+
     @Builder
-    public Chat(Long id, ChatRoomUser chatRoomUser, String contents) {
+
+    public Chat(Long id, ChatRoomUser chatRoomUser, String contents, Boolean isDeleted) {
         this.id = id;
         this.chatRoomUser = chatRoomUser;
         this.contents = contents;
+        this.isDeleted = isDeleted;
     }
 }

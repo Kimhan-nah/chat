@@ -2,6 +2,7 @@
 CREATE TABLE `users` (
                         `id` BIGINT AUTO_INCREMENT PRIMARY KEY,
                         `name` VARCHAR(255) NOT NULL,
+                        `is_deleted` BOOLEAN NOT NULL DEFAULT FALSE,
                         `created_at` DATETIME(6),
                         `modified_at` DATETIME(6)
 );
@@ -10,6 +11,7 @@ CREATE TABLE `users` (
 CREATE TABLE `chat_room` (
                             `id` BIGINT AUTO_INCREMENT PRIMARY KEY,
                             `title` VARCHAR(255) NOT NULL,
+                            `is_deleted` BOOLEAN NOT NULL DEFAULT FALSE,
                             `created_at` DATETIME(6),
                             `modified_at` DATETIME(6)
 );
@@ -19,6 +21,7 @@ CREATE TABLE `chat_room_user` (
                             `id` BIGINT AUTO_INCREMENT PRIMARY KEY,
                             `user_id` BIGINT NOT NULL,
                             `chat_room_id` BIGINT NOT NULL,
+                            `is_deleted` BOOLEAN NOT NULL DEFAULT FALSE,
                             `created_at` DATETIME(6),
                             `modified_at` DATETIME(6),
                             CONSTRAINT `uk_user_chat_room` UNIQUE (`user_id`, `chat_room_id`),
@@ -30,7 +33,8 @@ CREATE TABLE `chat_room_user` (
 CREATE TABLE `chat` (
                         `id` BIGINT AUTO_INCREMENT PRIMARY KEY,
                         `chat_room_user_id` BIGINT NOT NULL,
-                        `contents` VARCHAR(1000),
+                        `contents` VARCHAR(5000),
+                        `is_deleted` BOOLEAN NOT NULL DEFAULT FALSE,
                         `created_at` DATETIME(6),
                         `modified_at` DATETIME(6),
                         FOREIGN KEY (`chat_room_user_id`) REFERENCES `chat_room_user` (`id`)

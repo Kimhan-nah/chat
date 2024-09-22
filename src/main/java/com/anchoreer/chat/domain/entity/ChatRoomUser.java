@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -30,10 +31,14 @@ public class ChatRoomUser extends BaseTimeEntity {
     @JoinColumn(name = "chat_room_id")
     private ChatRoom chatRoom;
 
+    @NotNull
+    private Boolean isDeleted;
+
     @Builder
-    public ChatRoomUser(Long id, User user, ChatRoom chatRoom) {
+    public ChatRoomUser(Long id, User user, ChatRoom chatRoom, Boolean isDeleted) {
         this.id = id;
         this.user = user;
         this.chatRoom = chatRoom;
+        this.isDeleted = isDeleted;
     }
 }

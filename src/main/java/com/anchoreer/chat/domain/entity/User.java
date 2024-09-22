@@ -23,9 +23,13 @@ public class User extends BaseTimeEntity {
     @NotNull
     private String name;
 
+    @NotNull
+    private Boolean isDeleted;
+
     @Builder
-    public User(Long id, String name) {
+    public User(Long id, String name, Boolean isDeleted) {
         this.id = id;
         this.name = name;
+        this.isDeleted = isDeleted;
     }
 }

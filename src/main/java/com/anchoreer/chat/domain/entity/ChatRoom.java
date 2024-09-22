@@ -23,9 +23,13 @@ public class ChatRoom extends BaseTimeEntity {
     @NotNull
     private String title;
 
+    @NotNull
+    private Boolean isDeleted;
+
     @Builder
-    public ChatRoom(Long id, String title) {
+    public ChatRoom(Long id, String title, Boolean isDeleted) {
         this.id = id;
         this.title = title;
+        this.isDeleted = isDeleted;
     }
 }
