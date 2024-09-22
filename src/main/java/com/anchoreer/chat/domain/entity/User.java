@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -21,4 +22,10 @@ public class User extends BaseTimeEntity {
 
     @NotNull
     private String name;
+
+    @Builder
+    public User(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }

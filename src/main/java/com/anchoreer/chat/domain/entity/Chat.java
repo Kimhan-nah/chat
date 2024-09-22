@@ -11,6 +11,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -18,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "chat")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Chat extends BaseTimeEntity{
+public class Chat extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,4 +31,11 @@ public class Chat extends BaseTimeEntity{
     @NotNull
     @Size
     private String contents;
+
+    @Builder
+    public Chat(Long id, ChatRoomUser chatRoomUser, String contents) {
+        this.id = id;
+        this.chatRoomUser = chatRoomUser;
+        this.contents = contents;
+    }
 }
