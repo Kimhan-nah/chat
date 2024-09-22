@@ -41,7 +41,7 @@ class WebSocketStompClientIntegrationTests {
             List.of(new WebSocketTransport(new StandardWebSocketClient()))));
         this.stompClient.setMessageConverter(new MappingJackson2MessageConverter());
 
-        String url = "ws://localhost:" + port + "/ws";
+        String url = "ws://localhost:" + port + "/ws-connect";
         stompSession = stompClient.connectAsync(url, new StompSessionHandlerAdapter() {}).get(1, TimeUnit.SECONDS);
     }
 
