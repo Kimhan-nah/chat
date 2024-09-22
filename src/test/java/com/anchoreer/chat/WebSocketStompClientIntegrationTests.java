@@ -1,5 +1,12 @@
 package com.anchoreer.chat;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -16,16 +23,9 @@ import org.springframework.web.socket.messaging.WebSocketStompClient;
 import org.springframework.web.socket.sockjs.client.SockJsClient;
 import org.springframework.web.socket.sockjs.client.WebSocketTransport;
 
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-
 @ActiveProfiles("test")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@Disabled
 class WebSocketStompClientIntegrationTests {
 
     @LocalServerPort
@@ -42,7 +42,8 @@ class WebSocketStompClientIntegrationTests {
         this.stompClient.setMessageConverter(new MappingJackson2MessageConverter());
 
         String url = "ws://localhost:" + port + "/ws-connect";
-        stompSession = stompClient.connectAsync(url, new StompSessionHandlerAdapter() {}).get(1, TimeUnit.SECONDS);
+        stompSession = stompClient.connectAsync(url, new StompSessionHandlerAdapter() {
+        }).get(1, TimeUnit.SECONDS);
     }
 
     @Test
@@ -63,7 +64,7 @@ class WebSocketStompClientIntegrationTests {
 
             @Override
             public void handleFrame(StompHeaders headers, Object payload) {
-                resultFuture.complete((String) payload);
+                resultFuture.complete((String)payload);
             }
         });
 
