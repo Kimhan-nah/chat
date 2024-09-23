@@ -41,4 +41,8 @@ public class ChatRoomUser extends BaseTimeEntity {
         this.chatRoom = chatRoom;
         this.isDeleted = isDeleted;
     }
+
+    public void delete() {
+        this.isDeleted = true;
+    }
 }
