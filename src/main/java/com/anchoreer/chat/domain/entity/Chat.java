@@ -43,4 +43,8 @@ public class Chat extends BaseTimeEntity {
         this.contents = contents;
         this.isDeleted = isDeleted;
     }
+
+    public void delete() {
+        this.isDeleted = true;
+    }
 }
