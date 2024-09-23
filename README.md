@@ -5,6 +5,7 @@
     - [1-2. application.yml 파일 추가](#1-2-applicationyml-파일-추가)
     - [1-3. IntelliJ IDEA에서 프로젝트 실행](#1-3-intellij-idea에서-프로젝트-실행)
 - [2. DB ERD](#2-db-erd)
+- [3. TODO](#3-todo)
 
 # 0. Chat-Server
 | 실시간 채팅 서버 구현
@@ -75,3 +76,8 @@ spring:
 
 # 2. DB ERD
 ![ERD](./img/chat-server-db.png)
+
+# 3. TODO
+- [ ] Output Port 구현체 Output Adapter 구현 (Persistence)
+- [ ] STOMP 사용한 실시간 채팅 구현 + Controller 구현
+- [ ] 테스트 코드
