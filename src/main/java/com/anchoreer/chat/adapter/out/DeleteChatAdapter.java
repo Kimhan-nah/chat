@@ -1,7 +1,8 @@
-package com.anchoreer.chat.application.port.out;
+package com.anchoreer.chat.adapter.out;
 
 import org.springframework.stereotype.Component;
 
+import com.anchoreer.chat.application.port.out.DeleteChatPort;
 import com.anchoreer.chat.domain.entity.Chat;
 import com.anchoreer.chat.infrastructure.repository.ChatRepository;
 
