@@ -24,16 +24,24 @@ public class ChatRoom extends BaseTimeEntity {
     private String title;
 
     @NotNull
+    private Long activeUserCount;
+
+    @NotNull
     private Boolean isDeleted;
 
     @Builder
-    public ChatRoom(Long id, String title, Boolean isDeleted) {
+    public ChatRoom(Long id, String title, Long activeUserCount, Boolean isDeleted) {
         this.id = id;
         this.title = title;
+        this.activeUserCount = activeUserCount;
         this.isDeleted = isDeleted;
     }
 
     public void delete() {
         this.isDeleted = true;
+    }
+
+    public void increaseActiveUserCount() {
+        this.activeUserCount++;
     }
 }

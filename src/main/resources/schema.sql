@@ -11,6 +11,7 @@ CREATE TABLE `users` (
 CREATE TABLE `chat_room` (
                             `id` BIGINT AUTO_INCREMENT PRIMARY KEY,
                             `title` VARCHAR(255) NOT NULL,
+                            `active_user_count` BIGINT NOT NULL DEFAULT 0,
                             `is_deleted` BOOLEAN NOT NULL DEFAULT FALSE,
                             `created_at` DATETIME(6),
                             `modified_at` DATETIME(6)
