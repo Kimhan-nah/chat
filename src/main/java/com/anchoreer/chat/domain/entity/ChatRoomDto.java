@@ -2,6 +2,8 @@ package com.anchoreer.chat.domain.entity;
 
 import java.time.LocalDateTime;
 
+import com.querydsl.core.annotations.QueryProjection;
+
 import lombok.Builder;
 import lombok.Getter;
 
@@ -9,12 +11,14 @@ import lombok.Getter;
 public class ChatRoomDto {
     private Long id;
     private String title;
-    private int activeUsersCount;
+    private Long activeUsersCount;
     private String lastMessage;
     private LocalDateTime lastMessageTime;
 
     @Builder
-    public ChatRoomDto(Long id, String title, int activeUsersCount, String lastMessage, LocalDateTime lastMessageTime) {
+    @QueryProjection
+    public ChatRoomDto(Long id, String title, Long activeUsersCount, String lastMessage,
+        LocalDateTime lastMessageTime) {
         this.id = id;
         this.title = title;
         this.activeUsersCount = activeUsersCount;
