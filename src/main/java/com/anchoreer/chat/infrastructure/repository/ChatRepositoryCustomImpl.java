@@ -21,7 +21,7 @@ public class ChatRepositoryCustomImpl implements ChatRepositoryCustom {
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override
-    public Page<Chat> findAllByChatRoom_Id(long chatRoomId, Pageable pageable) {
+    public Page<Chat> findAllByChatRoomId(long chatRoomId, Pageable pageable) {
         List<Chat> content = jpaQueryFactory.select(chat)
             .from(chatRoom)
             .innerJoin(chatRoomUser)

@@ -7,5 +7,5 @@ import com.anchoreer.chat.domain.entity.Chat;
 
 public interface ChatRepositoryCustom {
     // TODO cursor 기반 페이징으로 변경
-    Page<Chat> findAllByChatRoom_Id(long chatRoomId, Pageable pageable);
+    Page<Chat> findAllByChatRoomId(long chatRoomId, Pageable pageable);
 }
