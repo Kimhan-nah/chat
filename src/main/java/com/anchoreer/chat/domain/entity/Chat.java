@@ -36,7 +36,6 @@ public class Chat extends BaseTimeEntity {
     private Boolean isDeleted;
 
     @Builder
-
     public Chat(Long id, ChatRoomUser chatRoomUser, String contents, Boolean isDeleted) {
         this.id = id;
         this.chatRoomUser = chatRoomUser;
@@ -46,5 +45,9 @@ public class Chat extends BaseTimeEntity {
 
     public void delete() {
         this.isDeleted = true;
+    }
+
+    public void updateContents(String contents) {
+        this.contents = contents;
     }
 }
