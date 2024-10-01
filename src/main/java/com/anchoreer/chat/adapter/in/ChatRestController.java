@@ -18,6 +18,7 @@ import com.anchoreer.chat.adapter.in.dto.response.ChatsResponseDto;
 import com.anchoreer.chat.application.port.in.ChatRoomCommandUseCase;
 import com.anchoreer.chat.application.port.in.ChatRoomQueryUseCase;
 import com.anchoreer.chat.domain.entity.Chat;
+import com.anchoreer.chat.domain.entity.ChatRoom;
 import com.anchoreer.chat.domain.entity.ChatRoomDto;
 
 import jakarta.validation.Valid;
@@ -32,9 +33,9 @@ public class ChatRestController {
     private final ChatRoomQueryUseCase chatRoomQueryUseCase;
 
     @PostMapping
-    public ResponseEntity<Void> createRoom(@RequestBody @Valid ChatRoomRequestDto chatRoomRequestDto) {
-        chatRoomCommandUseCase.createRoom(chatRoomRequestDto.getTitle());
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    public ResponseEntity<ChatRoomDto> createRoom(@RequestBody @Valid ChatRoomRequestDto chatRoomRequestDto) {
+        ChatRoom createdRoom = chatRoomCommandUseCase.createRoom(chatRoomRequestDto.getTitle());
+        return ResponseEntity.status(HttpStatus.CREATED).body(ChatRoomDto.from(createdRoom));
     }
 
     @GetMapping

@@ -25,4 +25,14 @@ public class ChatRoomDto {
         this.lastMessage = lastMessage;
         this.lastMessageTime = lastMessageTime;
     }
+
+    public static ChatRoomDto from(ChatRoom chatRoom) {
+        return ChatRoomDto.builder()
+            .id(chatRoom.getId())
+            .title(chatRoom.getTitle())
+            .activeUsersCount(0L)
+            .lastMessage(null)
+            .lastMessageTime(null)
+            .build();
+    }
 }
