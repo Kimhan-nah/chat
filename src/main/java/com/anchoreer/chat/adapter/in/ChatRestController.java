@@ -8,9 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.anchoreer.chat.adapter.in.dto.request.ChatRoomRequestDto;
 import com.anchoreer.chat.adapter.in.dto.response.ChatRoomsResponseDto;
 import com.anchoreer.chat.adapter.in.dto.response.ChatsResponseDto;
 import com.anchoreer.chat.application.port.in.ChatRoomCommandUseCase;
@@ -18,6 +20,7 @@ import com.anchoreer.chat.application.port.in.ChatRoomQueryUseCase;
 import com.anchoreer.chat.domain.entity.Chat;
 import com.anchoreer.chat.domain.entity.ChatRoomDto;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 
@@ -29,8 +32,8 @@ public class ChatRestController {
     private final ChatRoomQueryUseCase chatRoomQueryUseCase;
 
     @PostMapping
-    public ResponseEntity<Void> createRoom(String title) {
-        chatRoomCommandUseCase.createRoom(title);
+    public ResponseEntity<Void> createRoom(@RequestBody @Valid ChatRoomRequestDto chatRoomRequestDto) {
+        chatRoomCommandUseCase.createRoom(chatRoomRequestDto.getTitle());
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
