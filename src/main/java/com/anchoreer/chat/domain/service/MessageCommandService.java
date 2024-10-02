@@ -25,7 +25,7 @@ public class MessageCommandService implements MessageCommandUseCase {
 
     @Override
     @Transactional
-    public void sendMessage(ChatRoom chatRoom, User sender, String message) {
+    public Chat sendMessage(ChatRoom chatRoom, User sender, String message) {
         ChatRoomUser chatRoomUser = loadChatRoomUserPort.load(sender, chatRoom)
             .orElseThrow(() -> new NotFoundException("채팅방에 속해있지 않습니다."));
 
@@ -33,7 +33,7 @@ public class MessageCommandService implements MessageCommandUseCase {
             .chatRoomUser(chatRoomUser)
             .contents(message)
             .build();
-        saveChatPort.save(chat);
+        return saveChatPort.save(chat);
     }
 
     @Override

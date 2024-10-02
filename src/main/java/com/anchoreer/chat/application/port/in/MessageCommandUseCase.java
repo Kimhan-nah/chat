@@ -5,7 +5,7 @@ import com.anchoreer.chat.domain.entity.ChatRoom;
 import com.anchoreer.chat.domain.entity.User;
 
 public interface MessageCommandUseCase {
-    void sendMessage(ChatRoom chatRoom, User sender, String message);
+    Chat sendMessage(ChatRoom chatRoom, User sender, String message);
 
     void deleteMessage(ChatRoom chatRoom, User sender, Chat chat);
 }
