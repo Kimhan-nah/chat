@@ -24,8 +24,7 @@ public class ChatRoomQueryService implements ChatRoomQueryUseCase {
     @Override
     @Transactional(readOnly = true)
     public Page<Chat> getChatsByRoomId(Long roomId, Pageable pageable) {
-        ChatRoom chatRoom = loadChatRoomPort.load(roomId)
-            .orElseThrow(() -> new NotFoundException("채팅방이 존재하지 않습니다."));
+        ChatRoom chatRoom = getChatRoom(roomId);
         return loadChatPort.loadAll(chatRoom, pageable);
     }
 
@@ -33,5 +32,12 @@ public class ChatRoomQueryService implements ChatRoomQueryUseCase {
     @Transactional(readOnly = true)
     public Page<ChatRoomDto> getChatRooms(Pageable pageable) {
         return loadChatRoomPort.loadAll(pageable);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public ChatRoom getChatRoom(Long roomId) {
+        return loadChatRoomPort.load(roomId)
+            .orElseThrow(() -> new NotFoundException("채팅방이 존재하지 않습니다."));
     }
 }
