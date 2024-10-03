@@ -83,11 +83,11 @@ spring:
 
 ```mermaid
 sequenceDiagram
-participant U as 유저
-participant C as 클라이언트
-participant API as REST API 서버
-participant WS as WebSocket 서버
-participant DB as 데이터베이스
+    participant U as 유저
+    participant C as 클라이언트
+    participant API as REST API 서버
+    participant WS as WebSocket 서버
+    participant DB as 데이터베이스
 
     Note over U,DB: 1. 채팅방 목록 조회
     U->>C: 채팅방 목록 요청
@@ -110,8 +110,8 @@ participant DB as 데이터베이스
 
     Note over U,DB: 3. 채팅방 참여
     U->>C: 채팅방 입장 요청
-		C->>MB: 채팅방 구독 요청 (STOMP 프레임: SUBSCRIBE /rooms/{roomId})
-    MB-->>C: 구독 완료
+		C->>WS: 채팅방 구독 요청 (STOMP 프레임: SUBSCRIBE /rooms/{roomId})
+    WS-->>C: 구독 완료
     C->>WS: 채팅방 참여 메시지 (STOMP: SEND /app/join-room/{roomId})
     WS->>DB: 사용자 참여 정보 저장
     DB-->>WS: 저장 완료
